@@ -188,6 +188,11 @@
             $.each(this.modules, function (name, module) {
                 module.destroy();
             });
+            $.each(this.behaviors, function(name, behavior) {
+                if (typeof behavior.destroy === 'function') {
+                    behavior.destroy();
+                }
+            });
 
             this.timezone.destroy();
             this.timer.destroy();
