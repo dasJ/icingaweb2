@@ -72,6 +72,11 @@
                 autorefresh = false;
             }
 
+            if (url[0] !== '/') {
+                // TODO: Add an exception for named anchors? Though, currently it resembles a browser's behavior
+                url = this.baseUrl + '/' + url;
+            }
+
             this.icinga.logger.debug('Loading ', url, ' to ', $target);
 
             // We should do better and ignore requests without target and/or id
