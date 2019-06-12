@@ -913,7 +913,6 @@
             icinga.ui.fixControls();
 
             if (scrollPos !== false) {
-                console.log('set scroll pos', $container.attr('id'), $container.children('.content'), scrollPos)
                 $container.children('.content').scrollTop(scrollPos);
 
                 // Fallback for browsers without support for focus({preventScroll: true})
