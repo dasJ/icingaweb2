@@ -23,35 +23,41 @@ if ($this->layout()->inlineLayout) {
 }
 
 ?>
-<div id="announcements" class="container">
-    <?= $this->widget('announcements') ?>
+<div id="announcements">
+    <div class="container">
+        <?= $this->widget('announcements') ?>
+    </div>
 </div>
-<?php if (! $this->layout()->isIframe): ?>
 <div id="content-wrapper">
+<?php if (! $this->layout()->isIframe): ?>
     <div id="sidebar">
-    <div id="header">
-        <div id="header-logo-container">
-            <?= $this->qlink(
-                '',
-                Auth::getInstance()->isAuthenticated() ? 'dashboard' : '',
-                null,
-                array(
-                    'aria-hidden'       => 'true',
-                    'data-base-target'  => '_main',
-                    'id'                => 'header-logo'
-                )
-            ); ?>
+        <div class="container">
+            <div id="header">
+                <div id="header-logo-container">
+                    <?= $this->qlink(
+                        '',
+                        Auth::getInstance()->isAuthenticated() ? 'dashboard' : '',
+                        null,
+                        array(
+                            'aria-hidden'       => 'true',
+                            'data-base-target'  => '_main',
+                            'id'                => 'header-logo'
+                        )
+                    ); ?>
+                </div><!-- #header-logo-container -->
+            </div><!-- #header -->
+            <div class="content">
+            <?= $this->render('parts/navigation.phtml'); ?>
+            </div>
         </div>
     </div>
-    <?= $this->render('parts/navigation.phtml'); ?>
-    </div>
-    <?php endif ?>
+<?php endif ?>
     <div id="main" role="main">
-  <div id="col1" class="container<?= $moduleClass ?>"<?php if ($moduleName): ?> data-icinga-module="<?= $moduleName ?>" <?php endif ?> data-icinga-url="<?= $this->escape(Url::fromRequest()->without('renderLayout')->getAbsoluteUrl()); ?>"<?= $refresh; ?>><?= $this->render($inlineLayoutScript) ?></div>
-  <div id="col2" class="container"></div>
-  <div id="col3" class="container"></div>
-</div>
-</div>
+        <div id="col1" class="container<?= $moduleClass ?>"<?php if ($moduleName): ?> data-icinga-module="<?= $moduleName ?>" <?php endif ?> data-icinga-url="<?= $this->escape(Url::fromRequest()->without('renderLayout')->getAbsoluteUrl()); ?>"<?= $refresh; ?>><?= $this->render($inlineLayoutScript) ?></div>
+        <div id="col2" class="container"></div>
+        <div id="col3" class="container"></div>
+    </div>
+</div><!-- #content-wrapper -->
 <div id="footer">
   <ul role="alert" id="notifications"><?php
 
