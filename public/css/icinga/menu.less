@@ -46,8 +46,6 @@
 }
 
 #layout:not(.sidebar-collapsed) #menu .nav-item > a {
-  // Respect overflowing content
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -104,7 +102,8 @@
 ul:not(.nav-level-2) > .selected > a {
   background-color: @menu-highlight-color;
   color: @text-color-inverted;
-
+  position: relative;
+  overflow: hidden;
 
   &:hover {
     color: @text-color-inverted;
